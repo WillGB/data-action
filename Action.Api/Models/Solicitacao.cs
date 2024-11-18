@@ -5,16 +5,16 @@ namespace Action.Api.Models
 {
     public class Solicitacao
     {
-        public int Id { get; }
+        public int Id { get; private set; }
         public required string EmailSolicitante { get; set; }
         public DateTime? DataPublicacao { get; set; }
         public DateTime DataSolicitacao { get; private set; } = DateTime.Now;
-        public string Aprovador { get; set; }
+        public string? Aprovador { get; set; }
         public StatusSolicitacao Status { get; private set; } = StatusSolicitacao.PendenteAprovacao;
 
         public required ICollection<DataAction> Actions { get; set; }
 
-        public Solicitacao(ICollection<DataAction> actions, string emailSolicitante)
+        protected Solicitacao(ICollection<DataAction> actions, string emailSolicitante)
         {
             if (actions == null || !actions.Any())
                 throw new ArgumentException("A solicitação deve conter pelo menos uma Action.");

@@ -3,7 +3,7 @@ namespace Action.Api.DTOs
 {
     public class DataActionDTO
     {
-        public int Id { get; set; }
+        public int Id { get; }
         public string Nome { get; set; }
         public string Business { get; set; }
         public string BusinessChannel { get; set;}
